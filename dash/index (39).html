@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash - Your Ride, Your Delivery</title>
+     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 20% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+            animation: modal-show 0.3s ease-out;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes modal-show {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+   <header>
+    <div class="logo-container">
+            <img src="https://i.imgur.com/ZGJv93K.png" alt="Dash Logo" class="logo">
+        </div>
+    <nav>
+        <ul>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+    
+    <section id="hero">
+        <div class="container">
+            <h2>Your Ride, Your Delivery</h2>
+            <p>Get a ride or send packages with ease in Nairobi.</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>1. Request</h3>
+                    <p>Choose your service - taxi or package delivery - and provide necessary details.</p>
+                </div>
+                <div class="step">
+                    <h3>2. Match</h3>
+                    <p>We match you with the best available driver or delivery partner.</p>
+                </div>
+                <div class="step">
+                    <h3>3. Track</h3>
+                    <p>Track your ride or delivery in real-time and communicate with your driver.</p>
+                </div>
+                <div class="step">
+                    <h3>4. Complete</h3>
+                    <p>Complete your journey or delivery and provide feedback for improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Service Type</h3>
+                    <select id="vehicleType">
+                        <option value="taxi">Taxi</option>
+                        <option value="motorcycle">Motorcycle</option>
+                        <option value="Bus">Bus</option>
+                        <option value="truck">Truck</option>
+                    </select>
+                </div>
+                <div class="service">
+                    <h3>Request Service</h3>
+                    <form id="requestForm" onsubmit="return validateForm()">
+                       <input type="text" id="name" placeholder="Your Name" required>
+                       <input type="email" id="email" placeholder="Your Email" required>
+                       <button type="submit">Request</button>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </section>
+     
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out to us.</p>
+            <a href="mailto:linusmuriuki24@gmail.com" class="btn">Email Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Dash. All rights reserved.</p>
+        </div>
+    </footer>
+             
+    <!-- Modal for communication -->
+    <div id="communicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Communicate with Driver</h2>
+            <textarea id="message" rows="4" placeholder="Type your message here..."></textarea>
+            <button id="sendMessage">Send</button>
+        </div>
+    </div>
+                           
+    <script src="script.js"></script>
+    <script>
+       function validateForm() {
+           var name = document.getElementById("name").value;
+           var email = document.getElementById("email").value;
+                       
+           // Simple validation
+           if (name.trim() == "" || email.trim() == "") {
+               alert("Please fill in all fields.");
+               return false;
+           }
+           
+           // Email format validation
+           var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           if (!emailRegex.test(email)) {
+               alert("Please enter a valid email address.");
+               return false;
+           }
+           
+           return true;
+       }
+   </script>
+</body>
+</html>
